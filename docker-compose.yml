@@ -13,7 +13,7 @@ services:
     restart: always
     depends_on:
       config:
-        condition: service_healthy
+        condition: service_started
     ports:
       - 8061:8061
     logging:
@@ -26,7 +26,7 @@ services:
     restart: always
     depends_on:
       config:
-        condition: service_healthy
+        condition: service_started
     ports:
       - 8060:8060
     logging:
@@ -39,7 +39,7 @@ services:
     restart: always
     depends_on:
       config:
-        condition: service_healthy
+        condition: service_started
     logging:
       options:
         max-size: "10m"
@@ -50,7 +50,7 @@ services:
     restart: always
     depends_on:
       config:
-        condition: service_healthy
+        condition: service_started
     ports:
       - 8092:8092
     logging:
@@ -63,7 +63,7 @@ services:
     restart: always
     depends_on:
       config:
-        condition: service_healthy
+        condition: service_started
     ports:
       - 8091:8091
     logging:
@@ -76,7 +76,7 @@ services:
     restart: always
     depends_on:
       config:
-        condition: service_healthy
+        condition: service_started
     ports:
       - 8090:8090
     logging:
