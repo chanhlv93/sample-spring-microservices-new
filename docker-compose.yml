@@ -1,0 +1,85 @@
+version: '2.1'
+services:
+  config:
+    build: config-service
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  registry:
+    build: discovery-service
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    ports:
+      - 8061:8061
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  gateway:
+    build: gateway-service
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    ports:
+      - 8060:8060
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  proxy:
+    build: proxy-service
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  organization:
+    build: organization-service
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    ports:
+      - 8092:8092
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  department:
+    build: department-service
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    ports:
+      - 8091:8091
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+
+  employee:
+    build: employee-service
+    restart: always
+    depends_on:
+      config:
+        condition: service_healthy
+    ports:
+      - 8090:8090
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
