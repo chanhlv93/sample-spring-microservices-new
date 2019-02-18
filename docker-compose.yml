@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   config:
-    build: config-service
+    image: chanhlv93/m-config-service:v1.0
     restart: always
     logging:
       options:
@@ -9,7 +9,7 @@ services:
         max-file: "10"
 
   registry:
-    build: discovery-service
+    image: chanhlv93/m-discovery-service:v1.0
     restart: always
     depends_on:
       config:
@@ -22,7 +22,7 @@ services:
         max-file: "10"
 
   gateway:
-    build: gateway-service
+    image: chanhlv93/m-gateway-service:v1.0
     restart: always
     depends_on:
       config:
@@ -35,7 +35,7 @@ services:
         max-file: "10"
 
   proxy:
-    build: proxy-service
+    image: chanhlv93/m-proxy-service:v1.0
     restart: always
     depends_on:
       config:
@@ -46,7 +46,7 @@ services:
         max-file: "10"
 
   organization:
-    build: organization-service
+    image: chanhlv93/m-organization-service:v1.0
     restart: always
     depends_on:
       config:
@@ -59,7 +59,7 @@ services:
         max-file: "10"
 
   department:
-    build: department-service
+    image: chanhlv93/m-department-service:v1.0
     restart: always
     depends_on:
       config:
@@ -72,7 +72,7 @@ services:
         max-file: "10"
 
   employee:
-    build: employee-service
+    image: chanhlv93/m-employee-service:v1.0
     restart: always
     depends_on:
       config:

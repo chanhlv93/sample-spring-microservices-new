@@ -1,22 +1,22 @@
 #!/bin/bash
 
 cd config-service
-mvn clean package
+docker build -t chanhlv93/m-config-service:v1.0 .
 
 cd ../department-service
-mvn clean package
+docker build -t chanhlv93/m-department-service:v1.0 .
 
 cd ../discovery-service
-mvn clean package
+docker build -t chanhlv93/m-discovery-service:v1.0 .
 
 cd ../employee-service
-mvn clean package
+docker build -t chanhlv93/m-employee-service:v1.0 .
 
 cd ../gateway-service
-mvn clean package
+docker build -t chanhlv93/m-gateway-service:v1.0 .
 
 cd ../organization-service
-mvn clean package
+docker build -t chanhlv93/m-organization-service:v1.0 .
 
 cd ../proxy-service
-mvn clean package
+docker build -t chanhlv93/m-proxy-service:v1.0 .
