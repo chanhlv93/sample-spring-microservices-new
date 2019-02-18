@@ -3,8 +3,8 @@
 echo "create docker network..."
 docker network create bridge-network
 
-echo "run config service"
-docker run -d --name config --network bridge-network -p 8088:8088 chanhlv93/m-config-service:v1.0
+# echo "run config service"
+# docker run -d --name config --network bridge-network -p 8088:8088 chanhlv93/m-config-service:v1.0
 
 echo "run discovery service"
 docker run -d --name discovery --network bridge-network -p 8061:8061 chanhlv93/m-discovery-service:v1.0
