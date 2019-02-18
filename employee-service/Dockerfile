@@ -1,6 +1,8 @@
-FROM openjdk:8-jdk-alpine
-MAINTAINER chanhlv@fsoft.com.vn
-VOLUME /tmp
-ENV JAVA_OPTS=""
-ADD target/employee-service-1.0-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java","$JAVA_OPTS -Dfile.encoding=UTF8","-jar","/app.jar"]
+FROM openjdk:8-jre-alpine
+ENV APP_FILE employee-service-1.0-SNAPSHOT.jar
+ENV APP_HOME /app
+EXPOSE 8090
+COPY target/$APP_FILE $APP_HOME/
+WORKDIR $APP_HOME
+ENTRYPOINT ["sh", "-c"]
+CMD ["exec java -jar -Dfile.encoding=UTF8 $APP_FILE"]
