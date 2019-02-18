@@ -1,8 +1,6 @@
-FROM openjdk:8-jre-alpine
-ENV APP_FILE config-service-1.0-SNAPSHOT.jar
-ENV APP_HOME /app
-EXPOSE 8088
-COPY target/$APP_FILE $APP_HOME/
-WORKDIR $APP_HOME
-ENTRYPOINT ["sh", "-c"]
-CMD ["exec java -jar $APP_FILE"]
+FROM openjdk:8-jdk-alpine
+MAINTAINER chanhlv@fsoft.com.vn
+VOLUME /tmp
+ENV JAVA_OPTS=""
+COPY config-service-1.0-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java","$JAVA_OPTS -Dfile.encoding=UTF8","-jar","/app.jar"]
