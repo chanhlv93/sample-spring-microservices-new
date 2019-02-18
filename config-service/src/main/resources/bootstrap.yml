@@ -1,2 +1,16 @@
 server:
   port: 8088
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/chanhlv93/config-repo
+          # Search in the 'server-config' directory of the repo. This generally wouldn't
+          # be used because the configs would be in the root directory, but because
+          # this example repo is hosting both the code and the configs, we're
+          # isolating the configuration files into their own directory.
+          searchPaths: server-config
